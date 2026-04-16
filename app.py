@@ -8,7 +8,7 @@ resume_data = {
     "name": "Mason J Matute",
     "title": "Student",
     "email": "mason.matute@gmail.com",
-    "linkedin": "linkedin.com/in/yourprofile",
+    "instagram": "www.instagram.com/masonjarm/",
     "github": "github.com/Jaewonmm",
     "summary": "A highschool student with a passion to learn the field of Computer Science and Cybersecurity",
     "experience": [
@@ -36,10 +36,10 @@ resume_data = {
     ],
     "education": [
         {
-            "school": "University Name",
-            "degree": "B.S. Computer Science",
-            "year": "2020",
-            "gpa": "3.8"
+            "school": "Allen C Pope Highschool",
+            "degree": "Still in school",
+            "year": "2026 - 2027",
+            "gpa": "3.4"
         }
     ],
     "skills": {
