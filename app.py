@@ -1,0 +1,90 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+resume_data = {
+    "name": "Your Name",
+    "title": "Software Developer",
+    "email": "you@email.com",
+    "linkedin": "linkedin.com/in/yourprofile",
+    "github": "github.com/yourusername",
+    "summary": "A passionate developer with experience in building cool things.",
+    "experience": [
+        {
+            "company": "Company Name",
+            "role": "Job Title",
+            "duration": "Jan 2022 – Present",
+            "location": "Atlanta, GA",
+            "bullets": [
+                "Built X feature that improved Y by Z%",
+                "Led a team of 3 engineers",
+                "Shipped 10+ features to production"
+            ]
+        },
+        {
+            "company": "Previous Company",
+            "role": "Junior Developer",
+            "duration": "Jun 2020 – Dec 2021",
+            "location": "Remote",
+            "bullets": [
+                "Developed internal tooling used by 50+ employees",
+                "Improved deployment pipeline reducing release time by 40%"
+            ]
+        }
+    ],
+    "education": [
+        {
+            "school": "University Name",
+            "degree": "B.S. Computer Science",
+            "year": "2020",
+            "gpa": "3.8"
+        }
+    ],
+    "skills": {
+        "Languages": ["Python", "JavaScript", "HTML/CSS", "SQL"],
+        "Frameworks": ["Flask", "React", "Node.js"],
+        "Tools": ["Git", "Docker", "VS Code", "PostgreSQL"]
+    },
+    "projects": [
+        {
+            "name": "Project One",
+            "description": "A full-stack web app that does something amazing.",
+            "tech": ["Python", "Flask", "PostgreSQL"],
+            "link": "https://github.com/yourusername/project-one"
+        },
+        {
+            "name": "Project Two",
+            "description": "A mobile-friendly dashboard with real-time data.",
+            "tech": ["React", "Node.js", "MongoDB"],
+            "link": "https://github.com/yourusername/project-two"
+        }
+    ]
+}
+
+@app.route("/")
+def home():
+    return render_template("index.html", **resume_data)
+
+@app.route("/experience")
+def experience():
+    return render_template("experience.html", **resume_data)
+
+@app.route("/education")
+def education():
+    return render_template("education.html", **resume_data)
+
+@app.route("/skills")
+def skills():
+    return render_template("skills.html", **resume_data)
+
+@app.route("/projects")
+def projects():
+    return render_template("projects.html", **resume_data)
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html", **resume_data)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+#to run program use: python app.py

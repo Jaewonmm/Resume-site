@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-header">
+    <h2 class="page-title">Education</h2>
+    <p class="page-subtitle">Academic background</p>
+</div>
+
+<div class="edu-grid">
+    {% for edu in education %}
+    <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <h3 class="edu-school">{{ edu.school }}</h3>
+        <p class="edu-degree">{{ edu.degree }}</p>
+        <div class="edu-meta">
+            <span class="edu-year">Class of {{ edu.year }}</span>
+            {% if edu.gpa %}
+            <span class="edu-gpa">GPA: {{ edu.gpa }}</span>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

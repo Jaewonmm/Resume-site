@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-header">
+    <h2 class="page-title">Experience</h2>
+    <p class="page-subtitle">My professional journey</p>
+</div>
+
+<div class="timeline">
+    {% for job in experience %}
+    <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+            <div class="timeline-header">
+                <div>
+                    <h3 class="job-role">{{ job.role }}</h3>
+                    <p class="job-company">{{ job.company }} &nbsp;·&nbsp; {{ job.location }}</p>
+                </div>
+                <span class="job-duration">{{ job.duration }}</span>
+            </div>
+            <ul class="job-bullets">
+                {% for bullet in job.bullets %}
+                <li>{{ bullet }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

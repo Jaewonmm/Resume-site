@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="hero">
+    <div class="hero-text">
+        <h1 class="hero-name">{{ name }}</h1>
+        <p class="hero-title">{{ title }}</p>
+        <p class="hero-summary">{{ summary }}</p>
+        <div class="hero-buttons">
+            <a href="/experience" class="btn-primary">View Experience</a>
+            <a href="/contact" class="btn-secondary">Get In Touch</a>
+        </div>
+    </div>
+    <div class="hero-avatar">
+        <div class="avatar-circle">{{ name[0] }}</div>
+    </div>
+</div>
+
+<div class="quick-links">
+    <a href="/experience" class="quick-card">
+        <span class="card-icon">💼</span>
+        <span class="card-label">Experience</span>
+        <span class="card-arrow">→</span>
+    </a>
+    <a href="/education" class="quick-card">
+        <span class="card-icon">🎓</span>
+        <span class="card-label">Education</span>
+        <span class="card-arrow">→</span>
+    </a>
+    <a href="/skills" class="quick-card">
+        <span class="card-icon">⚡</span>
+        <span class="card-label">Skills</span>
+        <span class="card-arrow">→</span>
+    </a>
+    <a href="/projects" class="quick-card">
+        <span class="card-icon">🚀</span>
+        <span class="card-label">Projects</span>
+        <span class="card-arrow">→</span>
+    </a>
+</div>
+
+{% endblock %}
