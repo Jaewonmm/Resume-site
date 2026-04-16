@@ -1,16 +1,16 @@
 import os
 from flask import Flask, render_template
 
-
+#need to refresh site
 app = Flask(__name__)
 
 resume_data = {
     "name": "Mason J Matute",
-    "title": "Software Developer",
-    "email": "you@email.com",
+    "title": "Student",
+    "email": "mason.matute@gmail.com",
     "linkedin": "linkedin.com/in/yourprofile",
-    "github": "github.com/yourusername",
-    "summary": "A passionate developer with experience in building cool things.",
+    "github": "github.com/Jaewonmm",
+    "summary": "A highschool student with a passion to learn the field of Computer Science and Cybersecurity",
     "experience": [
         {
             "company": "Company Name",
