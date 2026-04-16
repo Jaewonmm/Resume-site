@@ -1,4 +1,6 @@
+import os
 from flask import Flask, render_template
+
 
 app = Flask(__name__)
 
@@ -86,5 +88,6 @@ def contact():
     return render_template("contact.html", **resume_data)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
 #to run program use: python app.py
