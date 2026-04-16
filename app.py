@@ -91,3 +91,4 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
 #to run program use: python app.py
+#to save programs use: git add . (then) git commit -m "describe what you changed" (then) git push
