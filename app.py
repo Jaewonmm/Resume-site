@@ -5,7 +5,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 resume_data = {
-    "name": "Your Name",
+    "name": "Mason J Matute",
     "title": "Software Developer",
     "email": "you@email.com",
     "linkedin": "linkedin.com/in/yourprofile",
