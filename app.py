@@ -13,14 +13,16 @@ resume_data = {
     "summary": "A highschool student with a passion to learn the field of Computer Science and Cybersecurity",
     "experience": [
         {
-            "company": "Company Name",
-            "role": "Job Title",
+            "company": "Whitesville St. Anns Summer",
+            "role": "Service",
             "duration": "Jan 2022 – Present",
-            "location": "Atlanta, GA",
+            "location": "Whitesville North Carolina",
             "bullets": [
-                "Built X feature that improved Y by Z%",
-                "Led a team of 3 engineers",
-                "Shipped 10+ features to production"
+                "Students and Adults from churches gather to provide aid to the people of Whitesville",
+                "Supervised students rebuild decks, repaint houses, fix plumbing, etc",
+                "Although work focused, religious activities like church take place with Whitesville's inhabitants"
+                "The summer program brings students alike to Whitesville for a week, where they stay at the local school while they assist the citizens every day"
+                "The Whitesville Mission Trip provides around 56 total service hours but requires 168 hours of the volunteers time"
             ]
         },
         {
