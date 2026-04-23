@@ -26,13 +26,15 @@ resume_data = {
             ]
         },
         {
-            "company": "Previous Company",
-            "role": "Junior Developer",
+            "company": "Habitat For Humanity",
+            "role": "Service",
             "duration": "Jun 2020 – Dec 2021",
-            "location": "Remote",
+            "location": "Pope Highschool",
             "bullets": [
-                "Developed internal tooling used by 50+ employees",
-                "Improved deployment pipeline reducing release time by 40%"
+                "Went around and did helpful service to people's homes",
+                "work included cleaning houses, fixing gardening, moving furnature or other objects, and much more"
+                "Over 15 hours of service was done while in the club"
+                ""
             ]
         }
     ],
