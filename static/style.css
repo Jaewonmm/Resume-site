@@ -5,7 +5,7 @@
    ========================================================================== */
 
 html { scroll-behavior: smooth; }
-body { background-color: #fbf9f9; }
+body { background-color: #FFFDF5; }
 
 /* Material Symbols default weighting to match the editorial reference. */
 .material-symbols-outlined {
@@ -14,7 +14,7 @@ body { background-color: #fbf9f9; }
 
 /* Premium hero gradient used on the Home page. */
 .hero-gradient {
-    background: linear-gradient(135deg, #fbf9f9 0%, #efeded 50%, #f5f3f3 100%);
+    background: linear-gradient(135deg, #FFFDF5 0%, #F7F5EE 50%, #F2F0E9 100%);
 }
 
 /* Hide scrollbars inside Command AI quick-actions strip. */
@@ -23,8 +23,8 @@ body { background-color: #fbf9f9; }
 
 /* Premium custom scrollbar across the site. */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #fbf9f9; }
-::-webkit-scrollbar-thumb { background: #dbdad9; }
+::-webkit-scrollbar-track { background: #FFFDF5; }
+::-webkit-scrollbar-thumb { background: #ddd9d9; }
 
 /* Project gallery hover dim-siblings effect. */
 .project-gallery:hover .project-card:not(:hover) {
