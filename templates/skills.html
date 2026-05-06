@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="page-header">
+<div class="page-header reveal">
     <h2 class="page-title">Skills</h2>
     <p class="page-subtitle">Technologies and tools I work with</p>
 </div>
 
+{% if skills_photo %}
+<div class="page-photo reveal">
+    <img src="/static/images/{{ skills_photo }}" alt="Skills">
+</div>
+{% endif %}
+
 <div class="skills-grid">
     {% for category, items in skills.items() %}
-    <div class="skill-category">
+    <div class="skill-category reveal">
         <h3 class="skill-cat-title">{{ category }}</h3>
         <div class="skill-tags">
             {% for skill in items %}

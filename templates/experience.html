@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="page-header">
+<div class="page-header reveal">
     <h2 class="page-title">Experience</h2>
     <p class="page-subtitle">My professional journey</p>
 </div>
 
 <div class="timeline">
     {% for job in experience %}
-    <div class="timeline-item">
+    <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
             <div class="timeline-header">
@@ -18,6 +18,11 @@
                 </div>
                 <span class="job-duration">{{ job.duration }}</span>
             </div>
+            {% if job.photo %}
+            <div class="card-photo">
+                <img src="/static/images/{{ job.photo }}" alt="{{ job.company }}">
+            </div>
+            {% endif %}
             <ul class="job-bullets">
                 {% for bullet in job.bullets %}
                 <li>{{ bullet }}</li>

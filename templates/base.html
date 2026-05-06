@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ name }} – Resume</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
-    <!-- TOP NAVBAR -->
     <nav class="navbar">
         <div class="nav-name">{{ name }}</div>
         <div class="nav-links">
@@ -23,10 +22,26 @@
         </div>
     </nav>
 
-    <!-- PAGE CONTENT -->
     <main class="main-content">
         {% block content %}{% endblock %}
     </main>
+
+    <!-- Scroll reveal: fades elements in as you scroll down -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, i * 120);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
 
 </body>
 </html>

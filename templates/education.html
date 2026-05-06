@@ -1,15 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="page-header">
+<div class="page-header reveal">
     <h2 class="page-title">Education</h2>
-    <p class="page-subtitle">Pope Highschool</p>
+    <p class="page-subtitle">Academic background</p>
 </div>
 
 <div class="edu-grid">
     {% for edu in education %}
-    <div class="edu-card">
-        <div class="edu-icon">💻</div>
+    <div class="edu-card reveal">
+        {% if edu.photo %}
+        <div class="card-photo">
+            <img src="/static/images/{{ edu.photo }}" alt="{{ edu.school }}">
+        </div>
+        {% endif %}
+        <div class="edu-icon">🎓</div>
         <h3 class="edu-school">{{ edu.school }}</h3>
         <p class="edu-degree">{{ edu.degree }}</p>
         <div class="edu-meta">

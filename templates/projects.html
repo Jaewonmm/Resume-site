@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="page-header">
+<div class="page-header reveal">
     <h2 class="page-title">Projects</h2>
     <p class="page-subtitle">Things I've built</p>
 </div>
 
 <div class="projects-grid">
     {% for project in projects %}
-    <div class="project-card">
+    <div class="project-card reveal">
+        {% if project.photo %}
+        <div class="card-photo">
+            <img src="/static/images/{{ project.photo }}" alt="{{ project.name }}">
+        </div>
+        {% endif %}
         <h3 class="project-name">{{ project.name }}</h3>
         <p class="project-desc">{{ project.description }}</p>
         <div class="project-tech">
