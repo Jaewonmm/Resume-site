@@ -1,29 +1,58 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="page-header reveal">
-    <h2 class="page-title">Projects</h2>
-    <p class="page-subtitle">Things I've built</p>
-</div>
-
-<div class="projects-grid">
-    {% for project in projects %}
-    <div class="project-card reveal">
-        {% if project.photo %}
-        <div class="card-photo">
-            <img src="/static/images/{{ project.photo }}" alt="{{ project.name }}">
-        </div>
-        {% endif %}
-        <h3 class="project-name">{{ project.name }}</h3>
-        <p class="project-desc">{{ project.description }}</p>
-        <div class="project-tech">
-            {% for tech in project.tech %}
-            <span class="tech-tag">{{ tech }}</span>
-            {% endfor %}
-        </div>
-        <a href="{{ project.link }}" target="_blank" class="project-link">View on GitHub →</a>
+<!-- Hero -->
+<section class="px-page-margin mb-section-gap">
+    <div class="max-w-4xl reveal">
+        <span class="font-label-caps text-label-caps text-secondary-fixed-dim uppercase tracking-widest block mb-4">Selected Work</span>
+        <h1 class="font-display-xl text-display-xl responsive-display text-primary mb-8">Technical <br>Projects.</h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+            A focused portfolio of research and engineering work at the intersection of artificial intelligence, cybersecurity, and systems design.
+        </p>
     </div>
-    {% endfor %}
-</div>
+</section>
+
+<!-- Gallery -->
+<section class="px-page-margin mb-section-gap">
+    <div class="project-gallery flex flex-col gap-gutter">
+        {% for p in projects %}
+        <a href="{{ p.link }}" target="_blank" rel="noopener" class="project-card group relative h-[520px] md:h-[640px] w-full overflow-hidden cursor-pointer block reveal bg-surface-container">
+            {% if p.photo %}
+            <img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out" src="/static/images/{{ p.photo }}" alt="{{ p.name }}">
+            {% else %}
+            <div class="absolute inset-0 bg-gradient-to-br from-surface-container-highest via-surface-container to-surface-dim flex items-center justify-center">
+                <span class="material-symbols-outlined text-outline-variant/30 text-[260px]">
+                    {%- if p.category == 'Cybersecurity' -%}shield
+                    {%- elif p.category == 'Artificial Intelligence' -%}psychology
+                    {%- else -%}hub{%- endif -%}
+                </span>
+            </div>
+            {% endif %}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-10 md:p-16 w-full flex justify-between items-end gap-6">
+                <div>
+                    <span class="font-label-caps text-label-caps text-on-primary/60 mb-4 block tracking-widest">{{ p.category|upper }}</span>
+                    <h3 class="font-headline-lg text-headline-lg responsive-headline text-on-primary">{{ p.name }}</h3>
+                    <p class="font-body-md text-body-md text-on-primary/75 mt-4 max-w-xl">{{ p.description }}</p>
+                    <div class="flex gap-3 mt-5 flex-wrap">
+                        {% for t in p.tech %}
+                        <span class="font-label-caps text-[10px] px-3 py-1 border border-on-primary/40 text-on-primary/80 tracking-widest">{{ t|upper }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-on-primary text-5xl opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 flex-shrink-0">arrow_outward</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Pointer to competencies -->
+<section class="px-page-margin mb-section-gap">
+    <a href="/skills" class="inline-flex items-center gap-4 text-primary group">
+        <span class="font-label-caps text-label-caps tracking-widest">EXPLORE CORE COMPETENCIES</span>
+        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+    </a>
+</section>
 
 {% endblock %}

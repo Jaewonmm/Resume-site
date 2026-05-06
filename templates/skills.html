@@ -1,28 +1,112 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="page-header reveal">
-    <h2 class="page-title">Skills</h2>
-    <p class="page-subtitle">Technologies and tools I work with</p>
-</div>
+{%- set icon_map = {
+    "brain":    "psychology",
+    "shield":   "shield",
+    "terminal": "terminal",
+    "flask":    "science",
+    "cloud":    "cloud",
+    "code":     "code"
+} -%}
 
-{% if skills_photo %}
-<div class="page-photo reveal">
-    <img src="/static/images/{{ skills_photo }}" alt="Skills">
-</div>
-{% endif %}
+<!-- Hero -->
+<section class="px-page-margin mb-section-gap">
+    <div class="max-w-4xl reveal">
+        <span class="font-label-caps text-label-caps text-secondary-fixed-dim uppercase tracking-widest block mb-4">Core Competencies</span>
+        <h1 class="font-display-xl text-display-xl responsive-display text-primary mb-8">Architecting Secure <br>& Intelligent Systems</h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+            Bridging the gap between complex computation and operational reliability. My approach combines deep algorithmic research with robust security protocols to build the future of tech.
+        </p>
+    </div>
+</section>
 
-<div class="skills-grid">
-    {% for category, items in skills.items() %}
-    <div class="skill-category reveal">
-        <h3 class="skill-cat-title">{{ category }}</h3>
-        <div class="skill-tags">
-            {% for skill in items %}
-            <span class="skill-tag">{{ skill }}</span>
-            {% endfor %}
+<!-- Bento competency grid -->
+<section class="px-page-margin mb-section-gap">
+    <div class="grid grid-cols-12 gap-gutter auto-rows-[240px]">
+        {%- set ml = competencies[0] %}
+        <div class="col-span-12 md:col-span-7 bg-surface-container-low border border-outline-variant/20 p-10 flex flex-col justify-between group hover:bg-surface-container-high transition-colors duration-500 reveal">
+            <div>
+                <span class="material-symbols-outlined text-4xl mb-6 text-primary">{{ icon_map[ml.icon] }}</span>
+                <h3 class="font-headline-md text-headline-md text-primary mb-4">{{ ml.title }}</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-md">{{ ml.description }}</p>
+            </div>
+            {% if ml.tags %}
+            <div class="flex gap-4 flex-wrap">
+                {% for t in ml.tags %}
+                <span class="font-label-caps text-[10px] px-3 py-1 border border-outline text-secondary tracking-widest">{{ t|upper }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        {%- set ns = competencies[1] %}
+        <div class="col-span-12 md:col-span-5 bg-primary text-on-primary p-10 flex flex-col justify-between reveal">
+            <div>
+                <span class="material-symbols-outlined text-4xl mb-6 text-on-primary" style="font-variation-settings:'FILL' 1;">{{ icon_map[ns.icon] }}</span>
+                <h3 class="font-headline-md text-headline-md mb-4">{{ ns.title }}</h3>
+            </div>
+            <p class="font-body-md text-body-md text-on-primary/70">{{ ns.description }}</p>
+        </div>
+
+        {%- set se = competencies[2] %}
+        <div class="col-span-12 md:col-span-5 bg-surface-container-highest border border-outline-variant/20 p-10 flex flex-col justify-end reveal">
+            <h3 class="font-headline-md text-headline-md text-primary mb-4">{{ se.title }}</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant">{{ se.description }}</p>
+        </div>
+
+        {%- set ci = competencies[3] %}
+        <div class="col-span-12 md:col-span-7 relative overflow-hidden group border border-outline-variant/20 reveal">
+            <div class="absolute inset-0 bg-secondary/10 group-hover:bg-secondary/20 transition-colors duration-700"></div>
+            <div class="relative z-10 p-10 h-full flex flex-col justify-between">
+                <span class="material-symbols-outlined text-4xl text-primary">{{ icon_map[ci.icon] }}</span>
+                <div>
+                    <h3 class="font-headline-md text-headline-md text-primary mb-2">{{ ci.title }}</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">{{ ci.description }}</p>
+                </div>
+            </div>
         </div>
     </div>
-    {% endfor %}
-</div>
+</section>
+
+<!-- Technical Projects gallery -->
+<section class="px-page-margin mb-section-gap">
+    <div class="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-16 reveal">
+        <h2 class="font-headline-lg text-headline-lg responsive-headline text-primary">Technical Projects</h2>
+        <div class="font-label-caps text-label-caps text-secondary tracking-widest">Research & Engineering (2026)</div>
+    </div>
+
+    <div class="project-gallery flex flex-col gap-gutter">
+        {% for p in projects %}
+        <a href="{{ p.link }}" target="_blank" rel="noopener" class="project-card group relative h-[520px] md:h-[640px] w-full overflow-hidden cursor-pointer block reveal bg-surface-container">
+            {% if p.photo %}
+            <img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out" src="/static/images/{{ p.photo }}" alt="{{ p.name }}">
+            {% else %}
+            <div class="absolute inset-0 bg-gradient-to-br from-surface-container-highest via-surface-container to-surface-dim flex items-center justify-center">
+                <span class="material-symbols-outlined text-outline-variant/30 text-[260px]">
+                    {%- if p.category == 'Cybersecurity' -%}shield
+                    {%- elif p.category == 'Artificial Intelligence' -%}psychology
+                    {%- else -%}hub{%- endif -%}
+                </span>
+            </div>
+            {% endif %}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-10 md:p-16 w-full flex justify-between items-end gap-6">
+                <div>
+                    <span class="font-label-caps text-label-caps text-on-primary/60 mb-4 block tracking-widest">{{ p.category|upper }}</span>
+                    <h3 class="font-headline-lg text-headline-lg responsive-headline text-on-primary">{{ p.name }}</h3>
+                    <p class="font-body-md text-body-md text-on-primary/75 mt-4 max-w-xl">{{ p.description }}</p>
+                    <div class="flex gap-3 mt-5 flex-wrap">
+                        {% for t in p.tech %}
+                        <span class="font-label-caps text-[10px] px-3 py-1 border border-on-primary/40 text-on-primary/80 tracking-widest">{{ t|upper }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-on-primary text-5xl opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 flex-shrink-0">arrow_outward</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
 
 {% endblock %}

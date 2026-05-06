@@ -1,27 +1,58 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="page-header reveal">
-    <h2 class="page-title">Contact</h2>
-    <p class="page-subtitle">Let's connect</p>
-</div>
+<!-- About / Pursuit hero -->
+<section class="px-page-margin mb-section-gap">
+    <div class="grid grid-cols-12 gap-gutter items-center">
+        <div class="col-span-12 md:col-span-7 reveal">
+            <p class="font-label-caps text-label-caps text-secondary mb-6 tracking-[0.3em]">IN PURSUIT OF SECURITY</p>
+            <h1 class="font-display-xl text-display-xl responsive-display text-primary mb-8 leading-[0.95]">
+                I explore the frontier of AI to build <span class="italic font-normal">resilient digital defenses.</span>
+            </h1>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-4">
+                {{ full_name }} is a computer science student and security enthusiast focused on the intersection of machine learning and offensive security. Driven by a fascination with complex systems, Mason builds tools that identify vulnerabilities before they can be exploited.
+            </p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                Currently pursuing a diploma in Computer Science, focusing on neural network architectures and their applications in automated threat detection and cryptanalysis.
+            </p>
+        </div>
+        <div class="col-span-12 md:col-span-5 reveal">
+            <div class="aspect-[4/5] w-full bg-surface-container border border-outline-variant/30 flex items-center justify-center overflow-hidden">
+                <span class="material-symbols-outlined text-outline-variant/30 text-[180px]">person</span>
+            </div>
+            <p class="italic font-body-md text-on-surface-variant text-right mt-3">Aspiring CS & Cybersecurity Professional</p>
+        </div>
+    </div>
+</section>
 
-<div class="contact-grid">
-    <div class="contact-card reveal">
-        <span class="contact-icon">✉️</span>
-        <p class="contact-label">Email</p>
-        <a href="mailto:{{ email }}" class="contact-value">{{ email }}</a>
+<!-- Inquiry section (large-type email focus) -->
+<section class="bg-surface-container-low py-section-gap px-page-margin text-center">
+    <p class="font-label-caps text-label-caps text-secondary mb-8 tracking-[0.4em] reveal">{{ contact_kicker|upper }}</p>
+    <h2 class="font-headline-lg text-headline-lg responsive-headline text-primary mb-10 reveal">{{ contact_headline }}</h2>
+
+    <a href="mailto:{{ email }}" class="block font-display-xl text-display-xl responsive-display text-primary hover:italic hover:opacity-80 transition-all duration-500 break-all reveal">
+        {{ email }}
+    </a>
+
+    <div class="flex justify-center gap-10 mt-16 reveal">
+        <a href="https://{{ linkedin }}" target="_blank" rel="noopener" class="flex items-center gap-2 text-primary font-body-md text-body-md hover:opacity-70 transition">
+            <span class="material-symbols-outlined text-xl">share</span> LinkedIn
+        </a>
+        <a href="https://{{ github }}" target="_blank" rel="noopener" class="flex items-center gap-2 text-primary font-body-md text-body-md hover:opacity-70 transition">
+            <span class="material-symbols-outlined text-xl">code</span> GitHub
+        </a>
+        <a href="https://{{ researchgate }}" target="_blank" rel="noopener" class="flex items-center gap-2 text-primary font-body-md text-body-md hover:opacity-70 transition">
+            <span class="material-symbols-outlined text-xl">description</span> ResearchGate
+        </a>
     </div>
-    <div class="contact-card reveal">
-        <span class="contact-icon">💼</span>
-        <p class="contact-label">LinkedIn</p>
-        <a href="https://{{ linkedin }}" target="_blank" class="contact-value">{{ linkedin }}</a>
+</section>
+
+<!-- Editorial closer strip -->
+<section class="relative h-[360px] md:h-[480px] w-full overflow-hidden bg-surface-container-high">
+    <div class="absolute inset-0 bg-gradient-to-br from-surface-container-highest via-surface-container to-surface-dim"></div>
+    <div class="absolute inset-0 flex items-center justify-center">
+        <span class="font-label-caps text-label-caps text-on-surface-variant/70 tracking-[0.5em]">{{ full_name|upper }} · 2026</span>
     </div>
-    <div class="contact-card reveal">
-        <span class="contact-icon">🐙</span>
-        <p class="contact-label">GitHub</p>
-        <a href="https://{{ github }}" target="_blank" class="contact-value">{{ github }}</a>
-    </div>
-</div>
+</section>
 
 {% endblock %}

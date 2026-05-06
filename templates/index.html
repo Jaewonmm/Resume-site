@@ -1,42 +1,119 @@
 {% extends "base.html" %}
+{% block main_classes %}{% endblock %}
 {% block content %}
 
-<div class="hero">
-    <div class="hero-text">
-        <h1 class="hero-name">{{ name }}</h1>
-        <p class="hero-title">{{ title }}</p>
-        <p class="hero-summary">{{ summary }}</p>
-        <div class="hero-buttons">
-            <a href="/experience" class="btn-primary">View Experience</a>
-            <a href="/contact" class="btn-secondary">Get In Touch</a>
+{%- set icon_map = {
+    "brain":    "psychology",
+    "shield":   "shield",
+    "terminal": "terminal",
+    "flask":    "science",
+    "cloud":    "cloud",
+    "code":     "code",
+    "badge":    "workspace_premium",
+    "trophy":   "emoji_events"
+} -%}
+
+<!-- Hero -->
+<section class="relative min-h-screen flex items-center px-page-margin hero-gradient pt-32">
+    <div class="grid grid-cols-12 w-full">
+        <div class="col-span-12 md:col-span-10 lg:col-span-9">
+            <p class="font-label-caps text-label-caps text-secondary mb-6 tracking-[0.3em] reveal">{{ title|upper }}</p>
+            <h1 class="font-display-xl text-display-xl responsive-display text-primary mb-8 leading-[0.95] reveal">
+                {{ tagline_lead }} <span class="italic font-normal">{{ tagline_italic }}</span><br>
+                Through Computational<br>Ethics.
+            </h1>
+            <div class="flex flex-col md:flex-row gap-gutter items-start md:items-center reveal">
+                <a href="/projects" class="bg-primary text-on-primary px-10 py-5 font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all active:scale-95">
+                    VIEW PROJECTS
+                </a>
+                <p class="font-body-lg text-body-lg text-secondary max-w-sm md:ml-4">
+                    {{ summary }}
+                </p>
+            </div>
         </div>
     </div>
-    <div class="hero-avatar">
-        <div class="avatar-circle">{{ name[0] }}</div>
-    </div>
-</div>
 
-<div class="quick-links">
-    <a href="/experience" class="quick-card">
-        <span class="card-icon">💼</span>
-        <span class="card-label">Experience</span>
-        <span class="card-arrow">→</span>
-    </a>
-    <a href="/education" class="quick-card">
-        <span class="card-icon">🎓</span>
-        <span class="card-label">Education</span>
-        <span class="card-arrow">→</span>
-    </a>
-    <a href="/skills" class="quick-card">
-        <span class="card-icon">⚡</span>
-        <span class="card-label">Skills</span>
-        <span class="card-arrow">→</span>
-    </a>
-    <a href="/projects" class="quick-card">
-        <span class="card-icon">🚀</span>
-        <span class="card-label">Projects</span>
-        <span class="card-arrow">→</span>
-    </a>
-</div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-12 left-page-margin hidden md:flex items-center gap-4">
+        <div class="w-[1px] h-20 bg-outline-variant relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1/2 bg-primary"></div>
+        </div>
+        <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">Scroll to explore journey</span>
+    </div>
+
+    <!-- Signature element -->
+    <div class="absolute right-page-margin bottom-12 hidden lg:block">
+        <span class="font-headline-lg text-headline-lg text-outline-variant/20 select-none">CLASS OF 2026</span>
+    </div>
+</section>
+
+<!-- Focus Areas (Bento) -->
+<section class="py-section-gap px-page-margin">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-gutter">
+        <div class="max-w-xl reveal">
+            <p class="font-label-caps text-label-caps text-secondary mb-4 tracking-[0.3em]">FOCUS AREAS</p>
+            <h2 class="font-headline-lg text-headline-lg responsive-headline text-primary">Technical Proficiency meets Academic Curiosity.</h2>
+        </div>
+        <p class="font-body-md text-body-md text-secondary max-w-xs pb-2 reveal">
+            A rigorous approach to learning complex systems through hands-on development and experimentation.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        {# AI — large card, left #}
+        {%- set ai = focus_areas[0] %}
+        <div class="md:col-span-7 p-10 border border-outline-variant/30 flex flex-col justify-between aspect-video md:aspect-auto md:min-h-[320px] reveal group hover:border-primary transition-colors duration-500">
+            <span class="material-symbols-outlined text-4xl text-primary">{{ icon_map[ai.icon] }}</span>
+            <div>
+                <h3 class="font-headline-md text-headline-md text-primary mb-4">{{ ai.title }}</h3>
+                <p class="font-body-md text-body-md text-secondary max-w-md">{{ ai.description }}</p>
+            </div>
+        </div>
+
+        {# Cybersecurity — dark feature card, right #}
+        {%- set cy = focus_areas[1] %}
+        <div class="md:col-span-5 p-10 bg-primary text-on-primary flex flex-col justify-between aspect-square md:aspect-auto md:min-h-[320px] reveal">
+            <span class="material-symbols-outlined text-4xl text-on-primary" style="font-variation-settings:'FILL' 1;">{{ icon_map[cy.icon] }}</span>
+            <div>
+                <h3 class="font-headline-md text-headline-md text-on-primary mb-4">{{ cy.title }}</h3>
+                <p class="font-body-md text-body-md text-on-primary/70">{{ cy.description }}</p>
+            </div>
+        </div>
+
+        {# Systems Design — small card, left #}
+        {%- set sd = focus_areas[2] %}
+        <div class="md:col-span-4 p-10 border border-outline-variant/30 flex flex-col justify-between aspect-square reveal group hover:border-primary transition-colors duration-500">
+            <span class="material-symbols-outlined text-4xl text-primary">{{ icon_map[sd.icon] }}</span>
+            <div>
+                <h3 class="font-headline-md text-headline-md text-primary mb-2">{{ sd.title }}</h3>
+                <p class="font-body-md text-body-md text-secondary">{{ sd.description }}</p>
+            </div>
+        </div>
+
+        {# Computational Research — wide card, right #}
+        {%- set cr = focus_areas[3] %}
+        <div class="md:col-span-8 p-10 border border-outline-variant/30 flex flex-col justify-between aspect-video md:aspect-auto md:min-h-[260px] relative overflow-hidden group reveal hover:border-primary transition-colors duration-500">
+            <div class="relative z-10">
+                <span class="material-symbols-outlined text-4xl text-primary">{{ icon_map[cr.icon] }}</span>
+                <h3 class="font-headline-md text-headline-md text-primary mt-12 mb-4">{{ cr.title }}</h3>
+                <p class="font-body-md text-body-md text-secondary max-w-md">{{ cr.description }}</p>
+            </div>
+            <div class="absolute right-0 bottom-0 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
+                <span class="material-symbols-outlined text-[180px]">schema</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-surface-container-low py-section-gap px-page-margin text-center">
+    <p class="font-label-caps text-label-caps text-secondary mb-8 tracking-[0.4em] reveal">OPEN FOR COLLABORATION</p>
+    <h2 class="font-display-xl text-display-xl responsive-display text-primary mb-12 max-w-4xl mx-auto reveal">Let's build the future of secure technology together.</h2>
+    <div class="flex justify-center gap-gutter reveal">
+        <a href="/contact" class="bg-primary text-on-primary px-12 py-6 font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all active:scale-95">
+            SEND A MESSAGE
+        </a>
+    </div>
+</section>
 
 {% endblock %}
