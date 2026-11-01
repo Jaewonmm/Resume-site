@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Mason Maute — Editorial Resume
+   Mason Matute — Editorial Resume
    Tailwind handles the bulk of styling; this file adds the tokens & effects
    Tailwind cannot express via utility classes alone.
    ========================================================================== */
@@ -47,7 +47,7 @@ body { background-color: #FFFDF5; }
 }
 
 /* Leave room at bottom of every page so the Command AI bar never covers content. */
-main { padding-bottom: 180px; }
+main { padding-bottom: 90px; }
 
 /* Hero-specific typing cursor on the display headline (Home). */
 .hero-headline .cursor {

@@ -34,6 +34,25 @@
         {{ email }}
     </a>
 
+    <a href="tel:{{ phone_href }}" class="block font-headline-lg text-headline-lg responsive-headline text-primary hover:italic hover:opacity-80 transition-all duration-500 mt-6 reveal">
+        {{ phone }}
+    </a>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter max-w-4xl mx-auto mt-16 text-left reveal">
+        <div class="border border-outline-variant/30 p-8">
+            <p class="font-label-caps text-label-caps text-secondary tracking-widest mb-3">LOCATION</p>
+            <p class="font-body-lg text-body-lg text-primary">{{ location }}</p>
+        </div>
+        <div class="border border-outline-variant/30 p-8">
+            <p class="font-label-caps text-label-caps text-secondary tracking-widest mb-3">LOOKING FOR</p>
+            <p class="font-body-lg text-body-lg text-primary">Paid internship or job, computer-related preferred</p>
+        </div>
+        <div class="border border-outline-variant/30 p-8">
+            <p class="font-label-caps text-label-caps text-secondary tracking-widest mb-3">AVAILABILITY</p>
+            <p class="font-body-lg text-body-lg text-primary">Flexible schedule, mostly online classes</p>
+        </div>
+    </div>
+
     <div class="flex justify-center gap-10 mt-16 reveal">
         {% if linkedin %}
         <a href="https://{{ linkedin }}" target="_blank" rel="noopener" class="flex items-center gap-2 text-primary font-body-md text-body-md hover:opacity-70 transition">

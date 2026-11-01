@@ -16,6 +16,9 @@ resume_data = {
 
     # ---- Contact ----
     "email": "mason.matute@gmail.com",
+    "phone": "(470) 269-9475",
+    "phone_href": "+14702699475",
+    "location": "Marietta, GA",
     "linkedin": None,
     "github": "github.com/Jaewonmm",
     "researchgate": None,
@@ -95,6 +98,7 @@ resume_data = {
             "description": "12th grade. 3.5 weighted GPA. AP coursework includes Precalculus, Business with Personal Finance, Computer Science Principles, and Computer Science A.",
             "year": "2027",
             "gpa": "3.5 weighted",
+            "link": "/classes",
             "photo": None,
         },
         {
@@ -104,15 +108,9 @@ resume_data = {
             "description": "Enrolled in college classes at KSU through dual enrollment, taken online alongside high school.",
             "year": "Current",
             "gpa": None,
+            "link": "/college",
             "photo": None,
         },
-    ],
-
-    # ---- Achievements badges (no certifications yet) ----
-    "certifications": [
-        {"label": "Achievement", "name": "BOA Regional Finalist, 5th Place", "icon": "trophy", "feature": True},
-        {"label": "Achievement", "name": "Multiple-Time Band Grand Champion", "icon": "badge", "feature": False},
-        {"label": "Service", "name": "200+ Volunteer Hours", "icon": "service", "feature": False},
     ],
 
     # ---- Skills / Competency Grid (template expects exactly 4) ----
@@ -121,7 +119,7 @@ resume_data = {
             "title": "Computer Science",
             "icon": "code",
             "description": "Python and basic JavaScript, built through AP Computer Science coursework and personal projects.",
-            "tags": ["Python", "JavaScript", "Flask", "Git"],
+            "tags": ["Python", "JavaScript", "Git"],
             "feature": False,
         },
         {
@@ -158,14 +156,6 @@ resume_data = {
     # ---- Projects ----
     "projects": [
         {
-            "name": "This Resume Website",
-            "category": "Computer Science",
-            "description": "A multi-page personal website built with Python and Flask and deployed live on Render.",
-            "tech": ["Python", "Flask", "HTML/CSS", "Render"],
-            "link": "https://github.com/Jaewonmm/Resume-site",
-            "photo": None,
-        },
-        {
             "name": "Custom Linux Desktop",
             "category": "Linux",
             "description": "Installed Linux and built a customized Hyprland desktop environment from scratch.",
@@ -183,6 +173,33 @@ resume_data = {
         },
     ],
 
+    # ---- High school courses (Pope High School) ----
+    "hs_courses": [
+        {"group": "AP Courses", "items": [
+            "AP Precalculus",
+            "AP English Language",
+            "AP Computer Science Principles",
+            "AP Computer Science A",
+            "AP Business with Personal Finance",
+            "AP U.S. History",
+        ]},
+        {"group": "Other Courses", "items": [
+            "Mastery Band",
+            "Spanish I",
+            "Spanish II",
+            "Spanish III",
+        ]},
+    ],
+
+    # ---- College courses (Kennesaw State, dual enrollment) ----
+    "college_courses": [
+        {"code": "ENGL 1101", "title": "English Composition I"},
+        {"code": "ENGL 1102", "title": "English Composition II"},
+        {"code": "CSE 1300", "title": None},
+        {"code": "MATH 1113", "title": "Precalculus"},
+        {"code": "ECON 1101", "title": None},
+    ],
+
     # ---- Contact / Inquiry copy ----
     "contact_headline": "Looking for a paid, computer-related internship or job.",
     "contact_kicker": "Open to Work",
@@ -193,7 +210,9 @@ resume_data = {
 command_intents = {
     "home":        {"route": "/",           "keywords": ["home", "start", "top"]},
     "experience":  {"route": "/experience", "keywords": ["experience", "work", "job", "volunteer", "band", "church", "cv"]},
-    "education":   {"route": "/education",  "keywords": ["education", "school", "academic", "academics", "diploma", "pope", "ksu", "kennesaw", "gpa", "classes"]},
+    "classes":     {"route": "/classes",    "keywords": ["classes", "class", "courses", "pope", "spanish", "band class"]},
+    "college":     {"route": "/college",    "keywords": ["college", "ksu", "kennesaw", "dual"]},
+    "education":   {"route": "/education",  "keywords": ["education", "school", "academic", "academics", "diploma", "gpa"]},
     "skills":      {"route": "/skills",     "keywords": ["skill", "skills", "stack", "tech", "tools", "linux", "python"]},
     "projects":    {"route": "/projects",   "keywords": ["project", "projects", "portfolio", "showcase", "github", "resume"]},
     "contact":     {"route": "/contact",    "keywords": ["contact", "email", "reach", "message", "hire"]},
@@ -221,6 +240,14 @@ def education():
 @app.route("/skills")
 def skills():
     return render_template("skills.html", **resume_data)
+
+@app.route("/classes")
+def classes():
+    return render_template("classes.html", **resume_data)
+
+@app.route("/college")
+def college():
+    return render_template("college.html", **resume_data)
 
 @app.route("/projects")
 def projects():

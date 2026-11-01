@@ -23,13 +23,14 @@
                 {{ tagline_lead }} <span class="italic font-normal">{{ tagline_italic }}</span><br>
                 {{ tagline_rest }}
             </h1>
-            <div class="flex flex-col md:flex-row gap-gutter items-start md:items-center reveal">
-                <a href="/projects" class="bg-primary text-on-primary px-10 py-5 font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all active:scale-95">
-                    VIEW PROJECTS
-                </a>
-                <p class="font-body-lg text-body-lg text-secondary max-w-sm md:ml-4">
+            <div class="flex flex-col gap-8 items-start reveal">
+                <p class="font-body-lg text-body-lg text-secondary max-w-xl">
                     {{ summary }}
                 </p>
+                <a href="/projects" class="inline-flex items-center gap-3 bg-primary text-on-primary px-8 py-4 font-label-caps text-label-caps tracking-widest hover:opacity-90 hover:gap-5 transition-all duration-300 active:scale-95">
+                    VIEW PROJECTS
+                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+                </a>
             </div>
         </div>
     </div>

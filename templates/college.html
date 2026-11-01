@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="px-page-margin mb-section-gap">
+    <div class="max-w-4xl reveal">
+        <a href="/experience" class="inline-flex items-center gap-2 text-secondary hover:text-primary mb-8 font-label-caps text-label-caps tracking-widest transition-colors">
+            <span class="material-symbols-outlined text-base">arrow_back</span> BACK
+        </a>
+        <span class="font-label-caps text-label-caps text-secondary mb-4 block tracking-[0.3em]">KENNESAW STATE UNIVERSITY · DUAL ENROLLMENT</span>
+        <h1 class="font-display-xl text-display-xl responsive-display text-primary mb-8">College <br>Courses.</h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+            College classes taken at KSU while still in high school.
+        </p>
+    </div>
+</section>
+
+<section class="px-page-margin mb-section-gap">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+        {% for c in college_courses %}
+        <div class="{% if loop.index0 == 0 %}bg-surface-container-low {% endif %}border border-outline-variant/30 p-10 reveal">
+            <span class="font-label-caps text-label-caps text-secondary mb-6 block tracking-widest">COURSE</span>
+            <h3 class="font-headline-md text-headline-md text-primary">{{ c.code }}</h3>
+            {% if c.title %}<p class="font-body-md text-body-md text-on-surface-variant mt-2">{{ c.title }}</p>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="px-page-margin mb-section-gap">
+    <a href="/classes" class="inline-flex items-center gap-4 text-primary group">
+        <span class="font-label-caps text-label-caps tracking-widest">SEE HIGH SCHOOL COURSES</span>
+        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+    </a>
+</section>
+
+{% endblock %}
