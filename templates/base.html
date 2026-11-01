@@ -125,8 +125,7 @@
         </div>
         <div class="flex gap-10">
             <a href="https://{{ github }}" target="_blank" rel="noopener" class="font-body-md text-body-md text-secondary hover:text-primary transition-opacity duration-300">GitHub</a>
-            <a href="https://{{ linkedin }}" target="_blank" rel="noopener" class="font-body-md text-body-md text-secondary hover:text-primary transition-opacity duration-300">LinkedIn</a>
-            <a href="https://{{ researchgate }}" target="_blank" rel="noopener" class="font-body-md text-body-md text-secondary hover:text-primary transition-opacity duration-300">ResearchGate</a>
+            {% if linkedin %}<a href="https://{{ linkedin }}" target="_blank" rel="noopener" class="font-body-md text-body-md text-secondary hover:text-primary transition-opacity duration-300">LinkedIn</a>{% endif %}
         </div>
     </footer>
 
@@ -156,7 +155,7 @@
                 <p class="font-label-caps text-[10px] text-secondary flex-shrink-0 tracking-widest">QUICK ACTIONS:</p>
                 <div class="flex gap-3">
                     <button data-route="/projects" class="quick-action px-3 py-1 bg-surface-container-high/50 hover:bg-surface-container-high rounded-full font-label-caps text-[10px] text-primary tracking-widest transition-colors whitespace-nowrap">VIEW PROJECTS</button>
-                    <button data-route="/skills" class="quick-action px-3 py-1 bg-surface-container-high/50 hover:bg-surface-container-high rounded-full font-label-caps text-[10px] text-primary tracking-widest transition-colors whitespace-nowrap">RESEARCH STACK</button>
+                    <button data-route="/skills" class="quick-action px-3 py-1 bg-surface-container-high/50 hover:bg-surface-container-high rounded-full font-label-caps text-[10px] text-primary tracking-widest transition-colors whitespace-nowrap">SKILLS</button>
                     <button data-route="/contact" class="quick-action px-3 py-1 bg-surface-container-high/50 hover:bg-surface-container-high rounded-full font-label-caps text-[10px] text-primary tracking-widest transition-colors whitespace-nowrap">CONTACT MASON</button>
                 </div>
             </div>
@@ -184,11 +183,11 @@
         const INTENTS = {{ command_intents|tojson }};
         const PLACEHOLDERS = [
             "What are Mason's achievements? (Type a command...)",
-            "Show me the cybersecurity projects...",
-            "Where did Mason study?",
-            "Jump to the research stack...",
+            "Show me the projects...",
+            "Where does Mason go to school?",
+            "Jump to the skills...",
             "How do I get in touch?",
-            "View the autonomous agent framework..."
+            "View the Linux setup..."
         ];
 
         const input = document.getElementById('commandAIInput');
