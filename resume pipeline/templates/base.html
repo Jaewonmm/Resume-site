@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ full_name }} — {{ title }}</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#e3e2e0",
+              "on-surface": "#1c1b1b",
+              "surface-dim": "#ddd9d9",
+              "on-tertiary-container": "#747676",
+              "tertiary-container": "#ffffff",
+              "surface-container-low": "#F7F5EE",
+              "surface-container-highest": "#e5e2e1",
+              "surface-bright": "#FFFDF5",
+              "tertiary": "#5d5f5f",
+              "secondary-container": "#e0dfde",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c7c6c5",
+              "tertiary-fixed": "#e2e2e2",
+              "background": "#FFFDF5",
+              "on-secondary-fixed-variant": "#464746",
+              "surface-tint": "#5d5f5f",
+              "on-primary-container": "#747676",
+              "on-secondary-fixed": "#1a1c1b",
+              "on-surface-variant": "#444748",
+              "primary-fixed": "#e2e2e2",
+              "on-tertiary": "#ffffff",
+              "surface": "#FFFDF5",
+              "outline": "#747878",
+              "inverse-surface": "#313030",
+              "surface-variant": "#e5e2e1",
+              "primary": "#7b1d1d",
+              "on-primary-fixed-variant": "#454747",
+              "on-background": "#1c1b1b",
+              "primary-container": "#ffffff",
+              "surface-container-lowest": "#FFFDF5",
+              "inverse-primary": "#c6c6c7",
+              "inverse-on-surface": "#f4f0ef",
+              "secondary": "#5e5e5d",
+              "on-primary-fixed": "#1a1c1c",
+              "outline-variant": "#c4c7c8",
+              "surface-container": "#F2F0E9",
+              "primary-fixed-dim": "#c6c6c7",
+              "tertiary-fixed-dim": "#c6c6c7",
+              "on-secondary": "#ffffff",
+              "surface-container-high": "#ebe7e7",
+              "on-secondary-container": "#626361",
+              "accent-red": "#7b1d1d"
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px"
+            },
+            spacing: {
+              "gutter": "32px",
+              "component-gap": "24px",
+              "page-margin": "8vw",
+              "section-gap": "160px"
+            },
+            fontFamily: {
+              "body-md": ["Manrope"],
+              "label-caps": ["Manrope"],
+              "headline-lg": ["Noto Serif"],
+              "display-xl": ["Noto Serif"],
+              "headline-md": ["Noto Serif"],
+              "body-lg": ["Manrope"]
+            },
+            fontSize: {
+              "body-md": ["16px", { "lineHeight": "28px", "fontWeight": "400" }],
+              "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+              "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+              "display-xl": ["84px", { "lineHeight": "92px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+              "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+              "body-lg": ["18px", { "lineHeight": "32px", "fontWeight": "400" }]
+            }
+          }
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="font-body-md text-on-surface bg-background selection:bg-primary selection:text-on-primary overflow-x-hidden">
+
+    <!-- Top Nav -->
+    <nav class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-outline-variant/30 bg-background/80 flex justify-between items-center px-page-margin py-6 max-w-full">
+        <a href="/" class="font-headline-md text-headline-md font-bold tracking-tighter text-primary cursor-pointer transition-transform active:scale-95">
+            {{ full_name|upper }}
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+            <a href="/experience" class="font-label-caps text-label-caps {% if request.path in ['/experience','/education'] %}text-primary border-b border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %} transition-colors duration-300 cursor-pointer active:scale-95">Experience</a>
+            <a href="/skills" class="font-label-caps text-label-caps {% if request.path == '/skills' %}text-primary border-b border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %} transition-colors duration-300 cursor-pointer active:scale-95">Skills</a>
+            <a href="/projects" class="font-label-caps text-label-caps {% if request.path == '/projects' %}text-primary border-b border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %} transition-colors duration-300 cursor-pointer active:scale-95">Projects</a>
+            <a href="/education" class="font-label-caps text-label-caps {% if request.path == '/about' %}text-primary border-b border-primary pb-1{% else %}text-secondary hover:text-primary{% endif %} transition-colors duration-300 cursor-pointer active:scale-95">About</a>
+        </div>
+        <a href="/contact" class="font-label-caps text-label-caps bg-primary text-on-primary px-8 py-3 tracking-widest hover:opacity-90 transition-all duration-500 ease-in-out cursor-pointer active:scale-95">
+            Contact
+        </a>
+    </nav>
+
+    <main class="{% block main_classes %}pt-32{% endblock %}">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full mt-section-gap border-t border-outline-variant/20 bg-background flex flex-col md:flex-row justify-between items-center px-page-margin py-gutter gap-6">
+        <div class="font-label-caps text-label-caps tracking-widest text-secondary">
+            © 2026 {{ full_name|upper }}. ASPIRING TECHNOLOGIST.
+        </div>
+        <div class="flex gap-10">
+            <a href="https://{{ github }}" target="_blank" rel="noopener" class="font-body-md text-body-md text-secondary hover:text-primary transition-opacity duration-300">GitHub</a>
+            {% if linkedin %}<a href="https://{{ linkedin }}" target="_blank" rel="noopener" class="font-body-md text-body-md text-secondary hover:text-primary transition-opacity duration-300">LinkedIn</a>{% endif %}
+        </div>
+    </footer>
+
+    <!-- ============== COMMAND AI (floating, glassmorphism) ============== -->
+    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[60] w-[calc(100%-2*theme(spacing.page-margin))] max-w-3xl">
+        <div class="bg-surface-container-lowest/70 backdrop-blur-2xl border border-outline-variant/40 rounded-xl p-4 shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 hover:border-primary/30">
+            <div class="flex items-center gap-4">
+                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+                    <span class="material-symbols-outlined text-xl font-light">terminal</span>
+                </div>
+                <div class="flex-grow relative">
+                    <input
+                        id="commandAIInput"
+                        type="text"
+                        autocomplete="off"
+                        spellcheck="false"
+                        placeholder="What are Mason's achievements? (Type a command...)"
+                        class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-primary placeholder:text-outline-variant/60 py-2 pr-24"
+                    />
+                    <div class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-3">
+                        <span class="hidden md:block font-label-caps text-[10px] text-outline-variant tracking-widest px-2 py-1 border border-outline-variant/30 rounded">⌘ K</span>
+                        <button id="commandAISubmit" aria-label="Submit command" class="material-symbols-outlined text-outline-variant hover:text-primary cursor-pointer transition-colors bg-transparent border-0 p-0">subdirectory_arrow_left</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 pt-3 border-t border-outline-variant/10 flex items-center gap-6 overflow-x-auto no-scrollbar">
+                <p class="font-label-caps text-[10px] text-secondary flex-shrink-0 tracking-widest">QUICK ACTIONS:</p>
+                <div class="flex gap-3">
+                    <button data-route="/projects" class="quick-action px-3 py-1 bg-surface-container-high/50 hover:bg-surface-container-high rounded-full font-label-caps text-[10px] text-primary tracking-widest transition-colors whitespace-nowrap">VIEW PROJECTS</button>
+                    <button data-route="/skills" class="quick-action px-3 py-1 bg-surface-container-high/50 hover:bg-surface-container-high rounded-full font-label-caps text-[10px] text-primary tracking-widest transition-colors whitespace-nowrap">SKILLS</button>
+                    <button data-route="/contact" class="quick-action px-3 py-1 bg-surface-container-high/50 hover:bg-surface-container-high rounded-full font-label-caps text-[10px] text-primary tracking-widest transition-colors whitespace-nowrap">CONTACT MASON</button>
+                </div>
+            </div>
+            <div id="commandAIFeedback" class="command-ai-feedback font-label-caps text-[10px] text-secondary tracking-widest mt-2 opacity-0 transition-opacity"></div>
+        </div>
+    </div>
+
+    <!-- Scroll reveal -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 90);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+
+    <!-- Command AI logic -->
+    <script>
+        const INTENTS = {{ command_intents|tojson }};
+        const PLACEHOLDERS = [
+            "What are Mason's achievements? (Type a command...)",
+            "Show me the projects...",
+            "Where does Mason go to school?",
+            "Jump to the skills...",
+            "How do I get in touch?",
+            "View the Linux setup..."
+        ];
+
+        const input = document.getElementById('commandAIInput');
+        const submit = document.getElementById('commandAISubmit');
+        const feedback = document.getElementById('commandAIFeedback');
+
+        let phIdx = 0;
+        setInterval(() => {
+            if (document.activeElement === input) return;
+            phIdx = (phIdx + 1) % PLACEHOLDERS.length;
+            input.placeholder = PLACEHOLDERS[phIdx];
+        }, 3200);
+
+        function resolveIntent(query) {
+            const q = query.toLowerCase().trim();
+            if (!q) return null;
+            for (const [name, data] of Object.entries(INTENTS)) {
+                if (data.keywords.some(kw => q.includes(kw))) return { name, ...data };
+            }
+            return null;
+        }
+        function showFeedback(text) {
+            feedback.textContent = text;
+            feedback.style.opacity = '1';
+            setTimeout(() => { feedback.style.opacity = '0'; }, 2400);
+        }
+        function runCommand(query) {
+            const match = resolveIntent(query);
+            if (!match) {
+                showFeedback("No match — try: projects, experience, education, skills, contact.");
+                return;
+            }
+            showFeedback(`→ Navigating to ${match.name}...`);
+            setTimeout(() => { window.location.href = match.route; }, 280);
+        }
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); runCommand(input.value); }
+            if (e.key === 'Escape') { input.blur(); input.value = ''; }
+        });
+        submit.addEventListener('click', () => runCommand(input.value));
+        document.querySelectorAll('.quick-action').forEach(btn => {
+            btn.addEventListener('click', () => { window.location.href = btn.dataset.route; });
+        });
+        window.addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault(); input.focus(); input.select();
+            }
+        });
+    </script>
+
+</body>
+</html>

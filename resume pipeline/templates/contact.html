@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- About / Pursuit hero -->
+<section class="px-page-margin mb-section-gap">
+    <div class="grid grid-cols-12 gap-gutter items-center">
+        <div class="col-span-12 md:col-span-7 reveal">
+            <p class="font-label-caps text-label-caps text-secondary mb-6 tracking-[0.3em]">ABOUT ME</p>
+            <h1 class="font-display-xl text-display-xl responsive-display text-primary mb-8 leading-[0.95]">
+                I learn by <span class="italic font-normal">building things.</span>
+            </h1>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-4">
+                {{ full_name }} is a high school senior at Pope High School in Marietta, GA, and a dual-enrollment student at Kennesaw State University. He is studying computer science and cybersecurity and is looking for a paid, computer-related internship or job where he can keep learning.
+            </p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                With only three in-person classes and the rest online, Mason has a flexible schedule and time available for work.
+            </p>
+        </div>
+        <div class="col-span-12 md:col-span-5 reveal">
+            <div class="aspect-[4/5] w-full bg-surface-container border border-outline-variant/30 flex items-center justify-center overflow-hidden">
+                <span class="material-symbols-outlined text-outline-variant/30 text-[180px]">person</span>
+            </div>
+            <p class="italic font-body-md text-on-surface-variant text-right mt-3">Aspiring Technologist</p>
+        </div>
+    </div>
+</section>
+
+<!-- Inquiry section (large-type email focus) -->
+<section class="bg-surface-container-low py-section-gap px-page-margin text-center">
+    <p class="font-label-caps text-label-caps text-secondary mb-8 tracking-[0.4em] reveal">{{ contact_kicker|upper }}</p>
+    <h2 class="font-headline-lg text-headline-lg responsive-headline text-primary mb-10 reveal">{{ contact_headline }}</h2>
+
+    <a href="mailto:{{ email }}" class="block font-display-xl text-display-xl responsive-display text-primary hover:italic hover:opacity-80 transition-all duration-500 break-all reveal">
+        {{ email }}
+    </a>
+
+    <div class="flex justify-center gap-10 mt-16 reveal">
+        {% if linkedin %}
+        <a href="https://{{ linkedin }}" target="_blank" rel="noopener" class="flex items-center gap-2 text-primary font-body-md text-body-md hover:opacity-70 transition">
+            <span class="material-symbols-outlined text-xl">share</span> LinkedIn
+        </a>
+        {% endif %}
+        <a href="https://{{ github }}" target="_blank" rel="noopener" class="flex items-center gap-2 text-primary font-body-md text-body-md hover:opacity-70 transition">
+            <span class="material-symbols-outlined text-xl">code</span> GitHub
+        </a>
+    </div>
+</section>
+
+<!-- Editorial closer strip -->
+<section class="relative h-[360px] md:h-[480px] w-full overflow-hidden bg-surface-container-high">
+    <div class="absolute inset-0 bg-gradient-to-br from-surface-container-highest via-surface-container to-surface-dim"></div>
+    <div class="absolute inset-0 flex items-center justify-center">
+        <span class="font-label-caps text-label-caps text-on-surface-variant/70 tracking-[0.5em]">{{ full_name|upper }} · CLASS OF 2027</span>
+    </div>
+</section>
+
+{% endblock %}

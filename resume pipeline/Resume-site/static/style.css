@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Mason Maute — Editorial Resume
+   Tailwind handles the bulk of styling; this file adds the tokens & effects
+   Tailwind cannot express via utility classes alone.
+   ========================================================================== */
+
+html { scroll-behavior: smooth; }
+body { background-color: #FFFDF5; }
+
+/* Material Symbols default weighting to match the editorial reference. */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Premium hero gradient used on the Home page. */
+.hero-gradient {
+    background: linear-gradient(135deg, #FFFDF5 0%, #F7F5EE 50%, #F2F0E9 100%);
+}
+
+/* Hide scrollbars inside Command AI quick-actions strip. */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Premium custom scrollbar across the site. */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #FFFDF5; }
+::-webkit-scrollbar-thumb { background: #ddd9d9; }
+
+/* Project gallery hover dim-siblings effect. */
+.project-gallery:hover .project-card:not(:hover) {
+    opacity: 0.35;
+    filter: grayscale(1) scale(0.98);
+}
+.project-card {
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Scroll reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Leave room at bottom of every page so the Command AI bar never covers content. */
+main { padding-bottom: 180px; }
+
+/* Hero-specific typing cursor on the display headline (Home). */
+.hero-headline .cursor {
+    display: inline-block;
+    width: 3px;
+    height: 0.85em;
+    background: currentColor;
+    margin-left: 6px;
+    vertical-align: text-bottom;
+    animation: blink 0.9s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Responsive guards for very narrow screens. */
+@media (max-width: 640px) {
+    .responsive-display { font-size: 52px !important; line-height: 60px !important; }
+    .responsive-headline { font-size: 34px !important; line-height: 42px !important; }
+}
